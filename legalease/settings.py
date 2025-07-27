@@ -19,7 +19,8 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '0.0.0.0',
-    # Add your domain here for production
+    '.onrender.com',  # Allow Render domains
+    # Add your custom domain here for production
 ]
 
 # Application definition - Minimal for performance
@@ -139,6 +140,12 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://127.0.0.1:5173",
 ]
+
+# Allow Render domains in production
+if not DEBUG:
+    CORS_ALLOWED_ORIGINS.extend([
+        "https://*.onrender.com",
+    ])
 
 CORS_ALLOW_ALL_ORIGINS = DEBUG
 
