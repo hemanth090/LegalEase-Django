@@ -70,8 +70,8 @@ LegalEase is a full-stack web application that leverages artificial intelligence
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/legalease.git
-   cd legalease
+   git clone https://github.com/hemanth090/LegalEase-Django.git
+   cd LegalEase-Django
    ```
 
 2. **Backend Setup**
@@ -238,9 +238,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👨‍💻 Developer
 
 **[Your Name]**
-- Portfolio: [your-portfolio.com](https://your-portfolio.com)
-- LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+- LinkedIn: [linkedin.com/in/hemanthkokkonda](https://linkedin.com/in/hemanthkokkonda)
+- Email: naveenhemanth4@example.com
 
 ## 🙏 Acknowledgments
 
