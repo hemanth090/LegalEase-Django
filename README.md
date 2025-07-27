@@ -239,7 +239,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **[Your Name]**
 - LinkedIn: [linkedin.com/in/hemanthkokkonda](https://linkedin.com/in/hemanthkokkonda)
-- Email: naveenhemanth4@example.com
+- Email: naveenhemanth4@gmail.com
 
 ## 🙏 Acknowledgments
 
