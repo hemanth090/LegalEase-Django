@@ -33,16 +33,27 @@ class ApiService {
     };
 
     try {
+      console.log('Fetch config:', config); // Debug log
       const response = await fetch(url, config);
+      console.log('Response status:', response.status, response.statusText); // Debug log
       
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+        console.error('Error response data:', errorData); // Debug log
+        throw new Error(errorData.error || `HTTP error! status: ${response.status} - ${response.statusText}`);
       }
 
-      return await response.json();
+      const data = await response.json();
+      console.log('Success response:', data); // Debug log
+      return data;
     } catch (error) {
       console.error(`API request failed for ${endpoint}:`, error);
+      console.error('Error details:', {
+        message: error.message,
+        stack: error.stack,
+        url: url,
+        config: config
+      });
       throw error;
     }
   }

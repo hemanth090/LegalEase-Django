@@ -144,7 +144,10 @@ CORS_ALLOWED_ORIGINS = [
 
 # Allow all Render domains in production
 if not DEBUG:
-    CORS_ALLOW_ALL_ORIGINS = True  # Temporary fix for Render deployment
+    CORS_ALLOW_ALL_ORIGINS = True  # Allow all origins in production
+    CORS_ALLOWED_ORIGINS.extend([
+        "https://legalease-frontend-mkif.onrender.com",
+    ])
 
 CORS_ALLOW_ALL_ORIGINS = DEBUG
 
