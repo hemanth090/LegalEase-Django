@@ -5,7 +5,12 @@ console.log('API_BASE_URL:', API_BASE_URL);
 
 class ApiService {
   static async makeRequest(endpoint, options = {}) {
-    const url = `${API_BASE_URL}${endpoint}`;
+    // Remove trailing slash from base URL and leading slash from endpoint to prevent double slashes
+    const baseUrl = API_BASE_URL.replace(/\/$/, '');
+    const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+    const url = `${baseUrl}${cleanEndpoint}`;
+    
+    console.log('Making request to:', url); // Debug log
     
     const defaultOptions = {
       headers: {
