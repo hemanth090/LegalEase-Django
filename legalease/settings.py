@@ -139,13 +139,12 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:3000",
     "http://127.0.0.1:5173",
+    "https://legalease-frontend-mkif.onrender.com",  # Your frontend URL
 ]
 
-# Allow Render domains in production
+# Allow all Render domains in production
 if not DEBUG:
-    CORS_ALLOWED_ORIGINS.extend([
-        "https://*.onrender.com",
-    ])
+    CORS_ALLOW_ALL_ORIGINS = True  # Temporary fix for Render deployment
 
 CORS_ALLOW_ALL_ORIGINS = DEBUG
 
