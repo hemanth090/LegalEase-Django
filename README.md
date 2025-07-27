@@ -1,183 +1,255 @@
-# LegalEase
+# LegalEase - AI Legal Document Simplifier
 
-**Professional legal document simplification service with AI-powered translation.**
+[![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://reactjs.org/)
+[![Django](https://img.shields.io/badge/Django-4.2-green.svg)](https://djangoproject.com/)
+[![Python](https://img.shields.io/badge/Python-3.8+-yellow.svg)](https://python.org/)
+[![License](https://img.shields.io/badge/License-MIT-red.svg)](LICENSE)
 
-LegalEase transforms complex legal documents into clear, understandable content using advanced AI technology. The application processes documents entirely in memory without storing sensitive user data.
+> Transform complex legal documents into clear, understandable explanations using AI technology.
 
-## 🎯 Features
+## 🎯 Project Overview
 
-- **Document Processing**: Extract text from PDF, DOCX, and image files
-- **AI Simplification**: Convert complex legal language to plain English
-- **Multi-language Translation**: Support for 75+ languages
-- **Privacy-First**: No document content stored on servers
-- **Professional API**: RESTful endpoints for integration
-- **Modern Frontend**: React-based user interface
+LegalEase is a full-stack web application that leverages artificial intelligence to simplify complex legal documents, making legal information accessible to everyone. The application features a modern, responsive interface built with React and a robust Django REST API backend.
 
-## 🏗️ Architecture
+## ✨ Key Features
 
-```
-LegalEase/
-├── backend/                 # Django REST API
-│   ├── documents/          # Main application
-│   │   ├── services/       # Business logic
-│   │   │   ├── ai_service.py
-│   │   │   ├── text_extractor.py
-│   │   │   └── translation_service.py
-│   │   ├── views.py        # API endpoints
-│   │   ├── models.py       # Database models
-│   │   └── serializers.py  # Request validation
-│   └── legalease/          # Django configuration
-└── frontend/               # React application
-    ├── src/
-    │   ├── components/     # React components
-    │   └── services/       # API communication
-    └── public/
-```
+### 🤖 AI-Powered Processing
+- **Document Simplification**: Converts complex legal jargon into plain English
+- **Multi-language Translation**: Supports 20+ languages for global accessibility
+- **Intelligent Analysis**: Context-aware processing for accurate simplification
 
-## 🚀 Quick Start
+### 📄 File Processing
+- **Multiple Formats**: PDF, DOCX, and image file support
+- **OCR Technology**: Extract text from scanned documents and images
+- **Drag & Drop Interface**: Intuitive file upload experience
+- **File Validation**: Size and format validation with user feedback
+
+### 🎨 Modern User Interface
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Real-time Processing**: Live status updates with progress indicators
+- **Clean Architecture**: Professional UI with smooth animations
+- **Accessibility**: WCAG compliant design principles
+
+### 🔒 Security & Privacy
+- **Memory-only Processing**: Documents processed in memory, never stored
+- **Data Protection**: No permanent storage of sensitive information
+- **Secure API**: RESTful API with proper error handling
+
+## 🛠️ Technology Stack
+
+### Frontend
+- **React 18.2** - Modern JavaScript library for building user interfaces
+- **CSS3** - Custom styling with CSS variables and modern layout techniques
+- **React Hooks** - State management with useState, useEffect
+- **Responsive Design** - Mobile-first approach with CSS Grid and Flexbox
+
+### Backend
+- **Django 4.2** - High-level Python web framework
+- **Django REST Framework** - Powerful toolkit for building Web APIs
+- **Python 3.8+** - Core programming language
+- **SQLite** - Lightweight database for development
+
+### AI & Processing
+- **Groq API** - Advanced language model for text simplification
+- **OCR Integration** - Optical Character Recognition for image processing
+- **Multi-language Support** - Translation capabilities for global reach
+
+### Development Tools
+- **Git** - Version control system
+- **npm** - Package management for frontend dependencies
+- **pip** - Python package management
+
+## 🚀 Getting Started
 
 ### Prerequisites
+- Python 3.8 or higher
+- Node.js 14 or higher
+- npm or yarn package manager
 
-- Python 3.8+
-- Node.js 16+
-- Groq API key (for AI features)
+### Installation
 
-### Backend Setup
-
-1. **Install dependencies:**
+1. **Clone the repository**
    ```bash
+   git clone https://github.com/yourusername/legalease.git
+   cd legalease
+   ```
+
+2. **Backend Setup**
+   ```bash
+   # Create virtual environment
+   python -m venv venv
+   
+   # Activate virtual environment
+   # Windows:
+   venv\Scripts\activate
+   # macOS/Linux:
+   source venv/bin/activate
+   
+   # Install dependencies
    pip install -r requirements.txt
-   ```
-
-2. **Configure environment:**
-   ```bash
-   cp .env.example .env
-   # Edit .env with your Groq API key
-   ```
-
-3. **Initialize database:**
-   ```bash
+   
+   # Run migrations
    python manage.py migrate
-   python manage.py createsuperuser
-   ```
-
-4. **Start server:**
-   ```bash
+   
+   # Start Django server
    python manage.py runserver
    ```
 
-### Frontend Setup
-
-1. **Install dependencies:**
+3. **Frontend Setup**
    ```bash
+   # Navigate to frontend directory
    cd frontend
+   
+   # Install dependencies
    npm install
-   ```
-
-2. **Start development server:**
-   ```bash
+   
+   # Start development server
    npm start
    ```
 
-## 📡 API Endpoints
+4. **Environment Configuration**
+   ```bash
+   # Copy environment template
+   cp .env.example .env
+   
+   # Add your API keys to .env file
+   GROQ_API_KEY=your_groq_api_key_here
+   ```
+
+### Usage
+
+1. Open your browser and navigate to `http://localhost:3000`
+2. Upload a legal document (PDF, DOCX, or image)
+3. Select your preferred language for translation (optional)
+4. Click "Process Document" to start AI analysis
+5. View simplified explanation and download results
+
+## 📁 Project Structure
+
+```
+legalease/
+├── frontend/                 # React frontend application
+│   ├── public/              # Static files
+│   ├── src/
+│   │   ├── components/      # Reusable React components
+│   │   ├── services/        # API service layer
+│   │   ├── App.js          # Main application component
+│   │   └── index.css       # Global styles
+│   └── package.json        # Frontend dependencies
+├── documents/               # Django app for document processing
+│   ├── services/           # Business logic services
+│   ├── views.py           # API endpoints
+│   ├── models.py          # Data models
+│   └── serializers.py     # API serializers
+├── legalease/              # Django project configuration
+│   ├── settings.py        # Project settings
+│   └── urls.py           # URL routing
+├── requirements.txt        # Python dependencies
+├── manage.py              # Django management script
+└── README.md             # Project documentation
+```
+
+## 🔧 API Endpoints
 
 ### Document Processing
-```http
-POST /api/process/
+- `POST /api/process-document/` - Process and simplify legal document
+- `GET /api/health/` - API health check
+- `GET /api/languages/` - Get supported languages
+
+### Request/Response Examples
+
+**Process Document:**
+```json
+POST /api/process-document/
 Content-Type: multipart/form-data
 
 {
-  "file": <document_file>,
-  "target_language": "es" (optional)
+  "file": "document.pdf",
+  "target_language": "en"
 }
 ```
 
-### Text Simplification
-```http
-POST /api/simplify/
-Content-Type: application/json
-
+**Response:**
+```json
 {
-  "text": "Legal text to simplify",
-  "target_language": "fr" (optional)
+  "success": true,
+  "file_info": {
+    "name": "contract.pdf",
+    "type": "pdf",
+    "size_mb": 2.5
+  },
+  "results": {
+    "original_text": "Complex legal text...",
+    "simplified_text": "Simplified explanation...",
+    "translated_text": "Translated content..."
+  }
 }
 ```
 
-### Supported Languages
-```http
-GET /api/languages/
-```
+## 🎨 UI/UX Features
 
-### Health Check
-```http
-GET /api/health/
-```
+- **Professional Design**: Clean, modern interface with consistent styling
+- **Interactive Elements**: Hover effects, smooth transitions, and visual feedback
+- **Progress Indicators**: Real-time processing status with animated progress bars
+- **Error Handling**: User-friendly error messages and validation
+- **Responsive Layout**: Optimized for all screen sizes and devices
+- **Accessibility**: Keyboard navigation and screen reader support
 
-## 🔒 Privacy & Security
+## 🧪 Testing
 
-- **Stateless Processing**: Documents processed in memory only
-- **No Data Storage**: No document content saved to database
-- **HTTPS Required**: Secure data transmission
-- **File Validation**: Strict file type and size limits
-- **Rate Limiting**: Protection against abuse
-
-## 🛠️ Development
-
-### Running Tests
 ```bash
+# Backend tests
 python manage.py test
+
+# Frontend tests
+cd frontend
+npm test
 ```
 
-### Code Quality
-```bash
-flake8 .
-black .
-```
+## 📈 Performance Optimizations
 
-### API Documentation
-Visit `/admin/` for Django admin interface and API exploration.
+- **Code Splitting**: Lazy loading of React components
+- **Optimized Assets**: Minified CSS and JavaScript in production
+- **Efficient API**: RESTful design with proper HTTP status codes
+- **Memory Management**: Efficient file processing without permanent storage
+- **Responsive Images**: Optimized loading for different screen sizes
 
-## 📦 Deployment
+## 🔮 Future Enhancements
 
-### Environment Variables
-```bash
-SECRET_KEY=your-secret-key
-DEBUG=False
-GROQ_API_KEY=your-groq-api-key
-ALLOWED_HOSTS=yourdomain.com
-```
-
-### Production Setup
-1. Set `DEBUG=False`
-2. Configure proper `ALLOWED_HOSTS`
-3. Use production database (PostgreSQL recommended)
-4. Set up reverse proxy (Nginx)
-5. Configure SSL certificates
+- [ ] User authentication and document history
+- [ ] Batch document processing
+- [ ] Advanced AI models for specialized legal domains
+- [ ] Integration with cloud storage services
+- [ ] Real-time collaboration features
+- [ ] Mobile application development
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Support
+## 👨‍💻 Developer
 
-For support and questions:
-- Create an issue on GitHub
-- Check the documentation
-- Review API endpoints
+**[Your Name]**
+- Portfolio: [your-portfolio.com](https://your-portfolio.com)
+- LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
+- Email: your.email@example.com
 
-## 🔧 Technical Stack
+## 🙏 Acknowledgments
 
-- **Backend**: Django, Django REST Framework
-- **Frontend**: React, Axios
-- **AI**: Groq API (Llama models)
-- **Text Extraction**: PyPDF2, python-docx, Tesseract OCR
-- **Database**: SQLite (development), PostgreSQL (production)
-- **Deployment**: Docker, Nginx, Gunicorn
+- Groq API for advanced language processing capabilities
+- Django and React communities for excellent documentation
+- Open source contributors who make projects like this possible
+
+---
+
+⭐ **Star this repository if you found it helpful!**
+
+*Making legal documents accessible to everyone through the power of AI.*
