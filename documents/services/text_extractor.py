@@ -5,10 +5,31 @@ Supports PDF, DOCX, and image files with OCR.
 
 import logging
 from io import BytesIO
-from PIL import Image
-import pytesseract
-from docx import Document as DocxDocument
-import PyPDF2
+
+# Import packages with fallbacks for deployment
+try:
+    from PIL import Image
+    PIL_AVAILABLE = True
+except ImportError:
+    PIL_AVAILABLE = False
+
+try:
+    import pytesseract
+    PYTESSERACT_AVAILABLE = True
+except ImportError:
+    PYTESSERACT_AVAILABLE = False
+
+try:
+    from docx import Document as DocxDocument
+    DOCX_AVAILABLE = True
+except ImportError:
+    DOCX_AVAILABLE = False
+
+try:
+    import PyPDF2
+    PYPDF2_AVAILABLE = True
+except ImportError:
+    PYPDF2_AVAILABLE = False
 
 logger = logging.getLogger(__name__)
 
@@ -23,6 +44,9 @@ def extract_text_from_docx(file_content):
     Returns:
         str: Extracted text
     """
+    if not DOCX_AVAILABLE:
+        raise Exception("DOCX processing is not available. The python-docx package is not installed.")
+    
     try:
         logger.info("Extracting text from DOCX file")
         
@@ -53,6 +77,9 @@ def extract_text_from_pdf(file_content):
     Returns:
         str: Extracted text
     """
+    if not PYPDF2_AVAILABLE:
+        raise Exception("PDF processing is not available. The PyPDF2 package is not installed.")
+    
     try:
         logger.info("Extracting text from PDF file")
         
@@ -92,6 +119,12 @@ def extract_text_from_image(file_content):
     Returns:
         str: Extracted text
     """
+    if not PIL_AVAILABLE:
+        raise Exception("Image processing is not available. The Pillow package is not installed.")
+    
+    if not PYTESSERACT_AVAILABLE:
+        raise Exception("OCR processing is not available. The pytesseract package is not installed.")
+    
     try:
         logger.info("Extracting text from image using OCR")
         
