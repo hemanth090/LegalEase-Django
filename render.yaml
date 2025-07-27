@@ -23,6 +23,9 @@ services:
     buildCommand: cd frontend && npm ci && npm run build
     staticPublishPath: ./frontend/build
     plan: free
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://legalease-backend-l9sr.onrender.com
     routes:
       - type: rewrite
         source: /*

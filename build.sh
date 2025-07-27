@@ -1,18 +1,21 @@
 #!/usr/bin/env bash
-# exit on error
+# LegalEase Build Script for Render Deployment
 set -o errexit
 
-# Upgrade pip and setuptools
+echo "🚀 Starting LegalEase deployment build..."
+
+# Upgrade pip and essential tools
+echo "📦 Upgrading pip and build tools..."
 pip install --upgrade pip setuptools wheel
 
-# Install system dependencies that might be needed
-# (Render usually has these, but just in case)
+# Install dependencies with fallback handling
+echo "📚 Installing Python dependencies..."
+pip install -r requirements.txt
 
-# Install Python dependencies with more verbose output
-pip install -r requirements.txt --verbose
-
-# Collect static files
+echo "🗂️ Collecting static files..."
 python manage.py collectstatic --no-input
 
-# Run migrations
+echo "🗄️ Running database migrations..."
 python manage.py migrate
+
+echo "✅ Build completed successfully!"
